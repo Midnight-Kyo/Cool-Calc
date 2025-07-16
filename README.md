@@ -1,69 +1,50 @@
-# React + TypeScript + Vite
+# Cyberpunk Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek, cyberpunk-themed calculator built with React, TypeScript, and Vite. Features a glowing neon UI, animated display, sound effects, and both light/dark modes. Designed for desktop, with plans for future web/mobile expansion.
 
-Currently, two official plugins are available:
+## ✨ Features
+- Futuristic cyberpunk UI with neon glows and glassmorphism
+- Responsive, animated calculator display with blinking cursor
+- Fully functional: add, subtract, multiply, divide, decimals, clear, backspace
+- Chained operations and error handling (e.g., divide by zero)
+- Light/Dark mode toggle
+- Subtle animated grid background
+- Button sound effects
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
+- [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/) for fast development
+- CSS for custom themes and animations
 
-## Expanding the ESLint configuration
+## 🖥️ Setup & Usage
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+3. **Open your browser:**
+   Visit [http://localhost:5173](http://localhost:5173)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Project Structure
+- `src/` — All React components and styles
+- `public/` — Static assets (add your own sound file here if desired)
+- `App.tsx` — App entry point
+- `Calculator.tsx` — Main calculator logic and state
+- `Display.tsx` — Calculator display
+- `ButtonPad.tsx` — Button grid
+- `Button.tsx` — Individual button with sound
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🎨 Credits
+- **Font:** [Orbitron](https://fonts.google.com/specimen/Orbitron) (Google Fonts)
+- **Button Sound:** [Beep Ping by Mike Koenig](https://soundbible.com/1133-Beep-Ping.html) (Attribution 3.0)
+- **UI Inspiration:** Cyberpunk/retro-futuristic design
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 📦 License
+This project is open source and free to use for personal and educational purposes. See [LICENSE](LICENSE) for details.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Enjoy your cyberpunk calculator! 🚀
