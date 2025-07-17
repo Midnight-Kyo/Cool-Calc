@@ -327,17 +327,17 @@ body::before {
   }
   .theme-toggle-btn {
     position: absolute;
-    top: 0.5rem;
+    top: 0.2rem;
     left: 50%;
     transform: translateX(-50%);
     width: auto;
-    min-width: 100px;
-    max-width: 160px;
+    min-width: 80px;
+    max-width: 120px;
     margin: 0 auto;
-    font-size: 0.85rem;
-    padding: 0.3rem 0.8rem;
+    font-size: 0.78rem;
+    padding: 0.18rem 0.6rem;
     display: block;
-    border-radius: 1rem;
+    border-radius: 0.9rem;
     z-index: 2;
   }
   .calculator-display {
