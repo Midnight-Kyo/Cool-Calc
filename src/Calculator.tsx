@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Display from './Display'
 import ButtonPad from './ButtonPad'
 
@@ -6,6 +6,10 @@ const isOperator = (val: string) => ['+', '-', '*', '/'].includes(val)
 const MAX_DISPLAY_LENGTH = 12
 
 const Calculator: React.FC = () => {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
+  useEffect(() => {
+    document.body.classList.toggle('light-mode', theme === 'light')
+  }, [theme])
   const [display, setDisplay] = useState('0')
   const [firstOperand, setFirstOperand] = useState<string | null>(null)
   const [operator, setOperator] = useState<string | null>(null)
@@ -79,6 +83,12 @@ const Calculator: React.FC = () => {
 
   return (
     <div className="calculator-container">
+      <button
+        className="theme-toggle-btn"
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      >
+        {theme === 'dark' ? '🌙 Neon Dark' : '🌞 Neon Light'}
+      </button>
       <Display value={display} />
       <ButtonPad onButtonClick={handleButtonClick} />
     </div>

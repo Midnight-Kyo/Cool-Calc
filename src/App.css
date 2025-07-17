@@ -329,6 +329,7 @@ body::before {
     position: absolute;
     top: -2.6rem;
     left: 50%;
+    right: auto;
     transform: translateX(-50%);
     min-width: unset;
     max-width: 90%;
@@ -342,6 +343,9 @@ body::before {
     z-index: 2;
     box-shadow: 0 0 12px #00fff7, 0 0 4px #ff00ea;
     background: #18181c;
+    color: #00fff7;
+    border: none;
+    font-family: 'Orbitron', 'Consolas', monospace;
   }
   .calculator-display {
     font-size: 1rem;
