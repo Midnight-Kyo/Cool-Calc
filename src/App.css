@@ -314,8 +314,8 @@ body::before {
   }
   .calculator-container {
     width: 100%;
-    max-width: 340px;
-    max-height: 88vh;
+    max-width: 280px;
+    max-height: 80vh;
     margin: 2vh auto;
     padding: 1.2rem 0.5rem 1rem 0.5rem;
     border-radius: 1.1rem;
@@ -365,6 +365,9 @@ body::before {
     height: 100%;
     box-sizing: border-box;
     border-radius: 0.5rem;
+  }
+  .hide-on-mobile {
+    display: none !important;
   }
 }
 

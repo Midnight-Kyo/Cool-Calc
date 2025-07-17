@@ -84,7 +84,7 @@ const Calculator: React.FC = () => {
   return (
     <div className="calculator-container">
       <button
-        className="theme-toggle-btn"
+        className="theme-toggle-btn hide-on-mobile"
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       >
         {theme === 'dark' ? '🌙 Neon Dark' : '🌞 Neon Light'}
