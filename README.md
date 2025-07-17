@@ -48,3 +48,10 @@ This project is open source and free to use for personal and educational purpose
 ---
 
 Enjoy your cyberpunk calculator! 🚀
+
+## 🚀 Deploying to GitHub Pages
+
+1. Run `npm run build` to generate the production build in the `docs/` folder.
+2. Commit and push the `docs/` folder to your repository.
+3. In your repository settings on GitHub, set GitHub Pages to serve from the `/docs` folder.
+4. Visit `https://<your-username>.github.io/Cool-Calc/` to see your deployed app.

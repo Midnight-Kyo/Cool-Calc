@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({ label, onClick }) => (
     className={`calc-btn${label === '⌫' ? ' calc-btn-backspace' : ''}`}
     aria-label={label}
     data-backspace={label === '⌫' ? 'true' : undefined}
-    onClick={e => { if (onClick) onClick(); try { clickSound.currentTime = 0; clickSound.play() } catch {} }}
+    onClick={() => { if (onClick) onClick(); try { clickSound.currentTime = 0; clickSound.play() } catch {} }}
   >
     {label}
   </button>
