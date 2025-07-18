@@ -35,7 +35,7 @@ const Calculator: React.FC = () => {
   // Sonic mode state
   const [sonicMode, setSonicMode] = useState(false)
   // Add secretBuffer for secret code detection
-  const [secretBuffer, setSecretBuffer] = useState('')
+  const secretBuffer = useRef('')
   // Track input history for secret code
   // const [inputHistory, setInputHistory] = useState<string[]>([]) // This line is removed
   // Error state for Sonic mode
@@ -158,13 +158,10 @@ const Calculator: React.FC = () => {
 
   const handleButtonClick = (label: string) => {
     // Secret code detection
-    setSecretBuffer(prev => {
-      const next = (prev + label).slice(-9)
-      if (next === '6969+420=') {
-        setSonicMode(true)
-      }
-      return next
-    })
+    secretBuffer.current = (secretBuffer.current + label).slice(-9)
+    if (secretBuffer.current === '6969+420=') {
+      setSonicMode(true)
+    }
 
     if (sonicMode) return // Ignore normal input in Sonic mode
 
