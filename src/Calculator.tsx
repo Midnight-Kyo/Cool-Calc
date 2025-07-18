@@ -35,7 +35,7 @@ const Calculator: React.FC = () => {
   // Sonic mode state
   const [sonicMode, setSonicMode] = useState(false)
   // Track input history for secret code
-  const [inputHistory, setInputHistory] = useState<string[]>([])
+  // const [inputHistory, setInputHistory] = useState<string[]>([]) // This line is removed
   // Error state for Sonic mode
   const [errorState, setErrorState] = useState(false)
   const [sonicCursorPos, setSonicCursorPos] = useState<number | null>(null)
@@ -73,7 +73,7 @@ const Calculator: React.FC = () => {
       setFirstOperand(null)
       setOperator(null)
       setWaitingForOperand(false)
-      setInputHistory([])
+      // setInputHistory([]) // This line is removed
       setErrorState(false)
       setSonicCursorPos(null)
       return
@@ -156,13 +156,13 @@ const Calculator: React.FC = () => {
 
   const handleButtonClick = (label: string) => {
     // Track input history for secret code and check immediately
-    setInputHistory(prev => {
-      const next = [...prev, label].slice(-9); // 9 chars: 6 9 6 9 + 4 2 0 =
-      if (next.join('') === '6969+420=') {
-        setSonicMode(true);
-      }
-      return next;
-    });
+    // setInputHistory(prev => { // This line is removed
+    //   const next = [...prev, label].slice(-9); // 9 chars: 6 9 6 9 + 4 2 0 =
+    //   if (next.join('') === '6969+420=') {
+    //     setSonicMode(true);
+    //   }
+    //   return next;
+    // });
 
     if (sonicMode) return // Ignore normal input in Sonic mode
 
