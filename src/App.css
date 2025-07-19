@@ -653,13 +653,14 @@ body.light-mode .calc-btn-backspace {
 
 @media (max-width: 400px) {
   .calculator-container.sonic-theme {
-    max-width: 80vw;
-    padding: 0.3rem 0.05rem;
-    --sonic-reset-font-size: 0.75rem; /* <--- Edit this value */
+    max-width: 30vh !important; /* was 80vw */
+    max-height: 80vh !important; /* Override conflicting rules */
+    padding: 0.1rem 0.01rem; /* was 0.3rem 0.05rem - reduce vertical padding */
+    --sonic-reset-font-size: 0.6rem; /* was 0.75rem */
   }
   .calculator-container.sonic-theme .sonic-btn {
-    font-size: 1.3rem; /* <--- Change this value for smaller mobile (≤400px) */
-    padding: 0.06em 0;
+    font-size: 1rem; /* was 0.75rem */
+    padding: 0.02em 0; /* was 0.06em 0 - reduce button padding */
   }
 }
 
