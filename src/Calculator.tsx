@@ -255,10 +255,10 @@ const Calculator: React.FC = () => {
               <button
                 key={idx}
                 className="calc-btn sonic-btn"
+                aria-label={label}
                 style={{
                   border: `2px solid ${sonicColors.accent}`,
                   fontWeight: 'bold',
-                  fontSize: '1.1rem',
                   borderRadius: '0.7rem',
                   boxShadow: '0 0 12px #00c3ff, 0 0 4px #fff',
                   cursor: 'pointer',
