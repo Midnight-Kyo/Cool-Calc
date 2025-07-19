@@ -314,10 +314,10 @@ body::before {
   }
   .calculator-container {
     width: 100%;
-    max-width: 280px;
-    max-height: 80vh;
+    max-width: 220px; /* was 280px */
+    max-height: 70vh; /* was 80vh */
     margin: 2vh auto;
-    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    padding: 0.7rem 0.2rem 0.7rem 0.2rem; /* was 1.2rem 0.5rem 1rem 0.5rem */
     border-radius: 1.1rem;
     box-sizing: border-box;
     box-shadow: 0 0 24px #00fff7, 0 0 6px #ff00ea;
@@ -368,6 +368,17 @@ body::before {
   }
   .hide-on-mobile {
     display: none !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .calculator-container {
+    max-width: 90vw;
+    padding: 0.5rem 0.1rem;
+  }
+  .sonic-btn {
+    font-size: 0.8rem;
+    padding: 0.12em 0;
   }
 }
 
@@ -533,13 +544,14 @@ body.light-mode .calc-btn-backspace {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Unified font size for all Sonic buttons */
   padding: 0.3em 0;
 }
+
 .sonic-btn[aria-label='RESET'] {
-  /* background: linear-gradient(135deg, #ff004c 60%, #00c3ff 100%); */
+  background: linear-gradient(135deg, #ff004c 60%, #00c3ff 100%);
   color: #ffffff;
-  font-size: 0.85rem; /* or 2em, or 20px, etc */
+  font-size: var(--sonic-reset-font-size, inherit);
 }
 .sonic-btn:hover, .sonic-btn:focus {
   background: linear-gradient(135deg, #ffff1c 60%, #00c3ff 100%);
@@ -625,4 +637,33 @@ body.light-mode .calc-btn-backspace {
     overflow-x: hidden;
     max-width: 100vw;
   }
+}
+
+@media (max-width: 430px) {
+  .calculator-container.sonic-theme {
+    max-width: 170px;
+    max-height: 60vh;
+    padding: 0.4rem 0.1rem 0.4rem 0.1rem;
+    --sonic-reset-font-size: 0.75rem; /* Only RESET uses this */
+  }
+  .calculator-container.sonic-theme .sonic-btn {
+    font-size: 1.3rem; /* All other Sonic buttons */
+  }
+}
+
+@media (max-width: 400px) {
+  .calculator-container.sonic-theme {
+    max-width: 80vw;
+    padding: 0.3rem 0.05rem;
+    --sonic-reset-font-size: 12rem; /* <--- Edit this value */
+  }
+  .calculator-container.sonic-theme .sonic-btn {
+    font-size: 0.75rem; /* <--- Change this value for smaller mobile (≤400px) */
+    padding: 0.06em 0;
+  }
+}
+
+/* Ensure RESET button font-size is not overridden in Sonic mode */
+.calculator-container.sonic-theme .sonic-btn[aria-label='RESET'] {
+  font-size: var(--sonic-reset-font-size, inherit);
 }
