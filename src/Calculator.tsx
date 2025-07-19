@@ -232,7 +232,7 @@ const Calculator: React.FC = () => {
   if (sonicMode) {
     return (
       <div className="sonic-calc-wrapper">
-        <div className="calculator-container sonic-theme">
+        <div className="calculator-container sonic-theme" style={{ minHeight: 0, height: '100vh', maxHeight: 700 }}>
           {/* Sonic, Tails, Eggman/Robotnik icons in corners */}
           <img src="/Cool-Calc/icons8-sonic-the-hedgehog-500.svg" alt="Sonic" style={{position: 'absolute', top: '-38px', left: '-38px', height: '64px', filter: 'drop-shadow(0 0 16px #00c3ff)'}} />
           <img src="/Cool-Calc/icons8-tails-prower-480.svg" alt="Tails" style={{position: 'absolute', top: '-38px', right: '-38px', height: '64px', filter: 'drop-shadow(0 0 16px #ffb300)'}} />
@@ -245,40 +245,36 @@ const Calculator: React.FC = () => {
             background: 'transparent',
             marginBottom: '0.7em',
           }}>SONIC SCIENTIFIC MODE!</h2>
-          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%'}}>
-            <div className="calculator-display sonic-display">
-              <span className="display-flex">
-                {renderSonicDisplayWithCursor()}
-              </span>
-            </div>
-            <div className="button-pad-grid sonic-grid">
-              {scientificButtons.map((label, idx) => (
-                <button
-                  key={idx}
-                  className="calc-btn sonic-btn"
-                  style={{
-                    background: label === 'RESET' ? 'linear-gradient(135deg, #ff004c 60%, #00c3ff 100%)' : sonicColors.button,
-                    color: label === 'RESET' ? '#fff' : sonicColors.text,
-                    border: `2px solid ${sonicColors.accent}`,
-                    fontWeight: 'bold',
-                    fontSize: '1.1rem',
-                    borderRadius: '0.7rem',
-                    boxShadow: '0 0 12px #00c3ff, 0 0 4px #fff',
-                    cursor: 'pointer',
-                    outline: 'none',
-                    margin: '0.1rem',
-                    transition: 'all 0.2s',
-                    minWidth: 0,
-                    minHeight: 0,
-                    width: '100%',
-                    height: '100%',
-                  }}
-                  onClick={() => handleSonicButtonClick(label)}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
+          <div className="calculator-display sonic-display">
+            <span className="display-flex">
+              {renderSonicDisplayWithCursor()}
+            </span>
+          </div>
+          <div className="button-pad-grid sonic-grid" style={{ minHeight: 0, flex: '1 1 auto', height: '100%' }}>
+            {scientificButtons.map((label, idx) => (
+              <button
+                key={idx}
+                className="calc-btn sonic-btn"
+                style={{
+                  border: `2px solid ${sonicColors.accent}`,
+                  fontWeight: 'bold',
+                  fontSize: '1.1rem',
+                  borderRadius: '0.7rem',
+                  boxShadow: '0 0 12px #00c3ff, 0 0 4px #fff',
+                  cursor: 'pointer',
+                  outline: 'none',
+                  margin: '0.1rem',
+                  transition: 'all 0.2s',
+                  minWidth: 0,
+                  minHeight: 0,
+                  width: '100%',
+                  height: '100%',
+                }}
+                onClick={() => handleSonicButtonClick(label)}
+              >
+                {label}
+              </button>
+            ))}
           </div>
         </div>
       </div>
