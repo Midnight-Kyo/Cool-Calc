@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Display from './Display'
 import ButtonPad from './ButtonPad'
 import { evaluate } from 'mathjs'
@@ -68,7 +68,7 @@ const Calculator: React.FC = () => {
     </>;
   }
 
-  const handleSonicButtonClick = (label: string) => {
+  const handleSonicButtonClick = useCallback((label: string) => {
     if (label === 'RESET') {
       setSonicMode(false)
       setDisplay('0')
@@ -154,9 +154,9 @@ const Calculator: React.FC = () => {
     }
     setSonicCursorPos(null)
     setErrorState(false)
-  }
+  }, [display, errorState, sonicCursorPos, setDisplay, setErrorState, setSonicCursorPos, setSonicMode, setFirstOperand, setOperator, setWaitingForOperand])
 
-  const handleButtonClick = (label: string) => {
+  const handleButtonClick = useCallback((label: string) => {
     // Secret code detection
     secretBuffer.current = (secretBuffer.current + label).slice(-9)
     if (secretBuffer.current === '6969+420=') {
@@ -217,7 +217,51 @@ const Calculator: React.FC = () => {
     } else if (label === '⌫') {
       setDisplay(prev => (prev.length > 1 ? prev.slice(0, -1) : '0'))
     }
-  }
+  }, [display, waitingForOperand, operator, firstOperand, sonicMode, setDisplay, setFirstOperand, setOperator, setWaitingForOperand, setSonicMode])
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.repeat) return;
+      let key = e.key;
+      // Map numpad keys
+      if (key.startsWith('Numpad')) key = key.replace('Numpad', '');
+      // Map Enter/Return
+      if (key === 'Enter' || key === 'Return') key = '=';
+      // Map Backspace
+      if (key === 'Backspace') key = '⌫';
+      // Map Escape to C
+      if (key === 'Escape') key = 'C';
+      // Map period
+      if (key === '.') key = '.';
+      // Map operators
+      if (["+","-","*","/"].includes(key)) key = key;
+      // Sonic scientific mode extra keys
+      if (sonicMode) {
+        const sciMap: Record<string, string> = {
+          's': 'sin', 'c': 'cos', 't': 'tan', 'l': 'log', 'n': 'ln', 'r': '√',
+          '^': '^', '(': '(', ')': ')', 'p': 'π', 'e': 'e',
+        };
+        if (sciMap[key]) {
+          handleSonicButtonClick(sciMap[key]);
+          e.preventDefault();
+          return;
+        }
+        if ([...Array(10).keys()].map(String).includes(key) || ['+', '-', '*', '/', '.', '=', 'C', '⌫', 'RESET'].includes(key)) {
+          handleSonicButtonClick(key);
+          e.preventDefault();
+          return;
+        }
+      } else {
+        if ([...Array(10).keys()].map(String).includes(key) || ['+', '-', '*', '/', '.', '=', 'C', '⌫'].includes(key)) {
+          handleButtonClick(key);
+          e.preventDefault();
+          return;
+        }
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [sonicMode, handleButtonClick, handleSonicButtonClick]);
 
   function compute(a: number, b: number, op: string) {
     switch (op) {

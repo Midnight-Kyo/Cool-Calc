@@ -156,6 +156,10 @@ body::before {
   -webkit-backdrop-filter: blur(8px);
   border: 1.5px solid rgba(0,255,247,0.18);
   box-sizing: border-box;
+  overflow-x: auto;
+  white-space: nowrap;
+  max-width: 100%;
+  text-overflow: ellipsis;
 }
 
 /* 6. Button styles remain, but are now fully responsive */
@@ -667,4 +671,20 @@ body.light-mode .calc-btn-backspace {
 /* Ensure RESET button font-size is not overridden in Sonic mode */
 .calculator-container.sonic-theme .sonic-btn[aria-label='RESET'] {
   font-size: var(--sonic-reset-font-size, inherit);
+}
+
+.calculator-display,
+.sonic-display {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  direction: ltr;
+}
+.display-value {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
 }
